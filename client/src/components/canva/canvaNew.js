@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { exportComponentAsJPEG, exportComponentAsPNG } from "react-component-export-image";
-import ReactToPrint from 'react-to-print';
-
 import { Ruler } from "../ruler";
-
 import Draggable from "react-draggable";
-
+import bgImage from '../../image/b1.png'
 const CanvaNew = React.forwardRef((props, ref) => {
+    const { backgroundTemplate } = props
     const [select, setSelect] = useState(true)
     const [company, setCompany] = useState(props)
     // console.log(company)
@@ -14,13 +12,11 @@ const CanvaNew = React.forwardRef((props, ref) => {
     const [email, setEmail] = useState(props)
     const [img, setImg] = useState('')
     const [backg, setBackg] = useState(props.backImage)
-
-
-
+    const [width, setWidth] = useState('650px')
+    const [height, setHeight] = useState('350px')
 
     const textSelect = () => {
         setSelect(!select)
-
     }
     const handleImageUpload = (e) => {
         // console.log(e.target.files[0])
@@ -34,27 +30,16 @@ const CanvaNew = React.forwardRef((props, ref) => {
     useEffect(() => {
         setNumber(props);
     }, [props]);
+
     useEffect(() => {
         setEmail(props);
     }, [props]);
-    // const myCan = document.getElementById('can');
-    // const download = document.getElementById('down');
-    // const downLoads = () => {
-    //     if (window.navigator.msSaveBlob) {
-    //         window.navigator.msSaveBlob(myCan.msToBlob(), "canva.png")
-    //     }
-    // }
 
     const clickText = document.querySelectorAll('p');
     clickText.forEach(item => {
         item.addEventListener('click', event => {
             const color = props.selectedColor;
-            console.log(color);
-
-
             event.target.style.color = color
-            // console.log(color);
-            console.log(event.target);
 
         })
     })
@@ -66,15 +51,17 @@ const CanvaNew = React.forwardRef((props, ref) => {
         setShowRuler(true);
         setTargetNode({ left: x, top: y + node.offsetTop, height: node.clientHeight });
     }
+    console.log(backgroundTemplate.cardB1);
+
     return (
         <div className="canva-board" >
+            <input type="text" placeholder="width" value={width} onChange={(e) => setWidth(e.target.value)} />
+            <input type="text" placeholder="height" value={height} onChange={(e) => setHeight(e.target.value)} /> <br />
             {showRuler && <Ruler node={targetNode} />}
             <input type="file" onChange={handleImageUpload}></input>
 
-            <div ref={ref} id="can" style={{ width: '650px', backgroundColor: props.changeBack, height: '350px', border: '1px solid black', position: 'absolute', margin: '200px' }}>
-                <div>
-                    <h1>{props.item}</h1>
-                </div>
+            <div ref={ref} id="can" style={{ width: width, backgroundColor: props.changeBack, backgroundImage: `url(${backgroundTemplate.cardB1})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover', height: height, border: '1px solid black', position: 'absolute', margin: '200px' }}>
+
                 <div>
                     {
                         props.items && props.items.map(item => {
@@ -116,14 +103,9 @@ const CanvaNew = React.forwardRef((props, ref) => {
                 </Draggable>
                 <Draggable bounds="parent" onDrag={onDrag} onStop={() => setShowRuler(false)}>
                     <div style={{ width: 250, position: 'relative', cursor: showRuler ? 'move' : '' }}>
-                        {/* <div>
-                            <h1 style={{ fontSize: props.imageSize + 'px' }}>hello</h1>
-
-                        </div> */}
                         <p style={{ fontFamily: props.changeFont, fontSize: props.changeFsize }} onClick={textSelect} >{props.company}   </p>
                     </div>
                 </Draggable>
-
 
                 <Draggable bounds="parent" onDrag={onDrag} onStop={() => setShowRuler(false)}>
                     <div style={{ width: 150, position: 'relative', cursor: showRuler ? 'move' : '' }}>
@@ -142,7 +124,6 @@ const CanvaNew = React.forwardRef((props, ref) => {
                         <p style={{ fontFamily: props.changeFont, fontSize: props.changeFsize }} >{props.email}</p>
                     </div>
                 </Draggable>
-
 
                 <Draggable bounds="parent" onDrag={onDrag} onStop={() => setShowRuler(false)}>
                     <div style={{ width: 150, position: 'relative', cursor: showRuler ? 'move' : '' }}>
@@ -178,7 +159,7 @@ const CanvaNew = React.forwardRef((props, ref) => {
             </div>
 
 
-        </div>
+        </div >
     )
 }
 );
@@ -197,11 +178,5 @@ const MyComponent = (props) => {
             </button>
         </React.Fragment>);
 }
-
-
-
-
-
-
 
 export default MyComponent;

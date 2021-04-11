@@ -16,8 +16,6 @@ import PropTypes from 'prop-types';
 import { login } from '../../components/flux/action/authAction'
 import { clearErrors } from '../../components/flux/action/errorAction'
 
-
-
 class LoginModal extends Component {
   state = {
     modal: false,
@@ -96,7 +94,6 @@ class LoginModal extends Component {
                 <Label for="email">Email</Label>
                 <Input
                   value={this.state.email}
-
                   type="email"
                   name="email"
                   id="email"

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import ColorPicker from './color-picker/colorpicker'
 import '../../css/text.css'
-import ReactToPrint from 'react-to-print';
-import CanComponent from '../canva/canva_component'
-import Example from '../canva/print'
 
 
 class Text extends Component {
@@ -75,7 +72,7 @@ class Text extends Component {
                     <option value="Teko">Teko</option>
 
                 </select>
-                <input type="range" min="0px" max="100px" style={{ marginTop: 'auto' }} onChange={this.props.fontsize}></input>
+                <input type="range" min="0px" max="150px" style={{ marginTop: 'auto' }} onChange={this.props.fontsize}></input>
                 <input className="fileChoose" type="file" style={{ marginTop: "auto" }} onChange={this.props.imageUpload}></input>
                 <ColorPicker getTextColor={this.changeTextColor} />
                 {/* <Example /> */}

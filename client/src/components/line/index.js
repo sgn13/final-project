@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 
 const defaultStyleValue = {
-  anchor      : { x: 0.5, y: 0.5 },
-  borderColor : 'blue',
-  borderStyle : 'dotted',
-  borderWidth : 2
+  anchor: { x: 0.5, y: 0.5 },
+  borderColor: 'silver',
+  borderStyle: 'dashed',
+  borderWidth: 2
 }
 
 export class Line extends PureComponent {
@@ -24,17 +24,17 @@ export class Line extends PureComponent {
     const dy = y1 - y0;
     const dx = x1 - x0;
 
-    const angle  = Math.atan2(dy, dx) * 180 / Math.PI;
+    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
     const length = Math.sqrt(dx * dx + dy * dy);
 
     const positionStyle = {
-      position        : 'absolute',
-      top             : `${y0}px`,
-      left            : `${x0}px`,
-      width           : `${length}px`,
-      zIndex          : '0',
-      transform       : `rotate(${angle}deg)`,
-      transformOrigin : '0 0',
+      position: 'absolute',
+      top: `${y0}px`,
+      left: `${x0}px`,
+      width: `${length}px`,
+      zIndex: '0',
+      transform: `rotate(${angle}deg)`,
+      transformOrigin: '0 0',
     };
 
     const defaultStyle = {

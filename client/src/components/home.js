@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Nav from './header/nav';
 import '../css/home.css';
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class Home extends Component {
     state = {}
@@ -25,7 +24,7 @@ class Home extends Component {
                         <h4>business-card</h4>
                     </div>
                     <div className="bannner">
-                        <NavLink to="/banner" className="scroll-link">
+                        <NavLink to="/design" className="scroll-link">
                             <img src={require("../image/banner.jpg")} alt="" />
                         </NavLink >
                         <h4>Banner-design</h4>

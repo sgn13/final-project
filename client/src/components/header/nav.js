@@ -31,15 +31,14 @@ class nav extends Component {
 
         const authLinks = (
             <Fragment>
-                <NavItem >
+                {/* <NavItem >
                     <span className="navbar-text mr-3">
                         <div class="strong">{user ? `Welcome, ${user.name}` : ''}</div>
                     </span>
+                </NavItem> */}
+                <NavItem>
+                    <Logout />
                 </NavItem>
-                <Button variant="outline-secondary" className="mr-sm-4">
-                    <NavItem>
-                        <Logout />
-                    </NavItem></Button>
             </Fragment>
         );
 

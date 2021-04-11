@@ -24,7 +24,7 @@ class RegisterModal extends Component {
     name: '',
     email: '',
     password: '',
-    passwordCheck: '',
+    password2: '',
     msg: null
   };
   static propTypes = {
@@ -70,14 +70,14 @@ class RegisterModal extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const { name, email, password, passwordCheck } = this.state;
+    const { name, email, password, password2 } = this.state;
 
     //Create user object
     const newUser = {
       name,
       email,
       password,
-      passwordCheck
+      password2
     };
     console.log(newUser);
     //Attempt to register
@@ -132,16 +132,16 @@ class RegisterModal extends Component {
                   className="mb-3"
                   onChange={this.onChange}
                 />
-                {/* <Label for="passwordCheck">Retype Password</Label>
+                <Label for="password2">Retype Password</Label>
                 <Input
-                  value={this.state.passwordCheck}
+                  value={this.state.password2}
                   type="password"
-                  name="passwordCheck"
-                  id="passwordCheck"
+                  name="password2"
+                  id="password2"
                   placeholder="Re-type Password"
                   className="mb-3"
                   onChange={this.onChange}
-                /> */}
+                />
                 <Button color="dark" style={{ marginTop: '2rem' }} block>
                   Register
                   </Button>
